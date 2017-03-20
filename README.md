@@ -31,3 +31,12 @@ The reason for the button being disabled by default is that this component requi
 An ```aria-checked``` attribute should be set to announce the current state of the switch. If this attribute is not present, the script will default to setting an ```aria-checked="false"```, but that's not helpful for users with blocked JavaScript. So again, remember to set this attribute.
 
 Use the ```aria-labelledby``` to point to a text label that this switch will control the state of. If a visible label is not present (e.g. you're using an icon of some sort, or somehow it's visually apparent what this switch does without a visible label), be sure to use an ```aria-label``` instead to give context as to what this switch is toggling on/off. Currently there is no fallback for intelligently setting an appropriate label or labelledby value to this component, if one is not manually set, so instead a console error is purposefully left in the script when a switch is missing these attributes.
+
+
+### License & Such
+
+This script was written by [Scott O'Hara](https://twitter.com/scottohara).
+
+It has an [MIT](https://github.com/scottaohara/accessible-components/blob/master/LICENSE.md) license.
+
+Do with it what you will :)
