@@ -17,7 +17,7 @@
 
 
 
-  // Create accordion instances
+  // Create switch instances
   ARIAswitch.create = function () {
 
     // setup / cache vars
@@ -41,7 +41,7 @@
         self.setAttribute('role', 'switch');
       }
 
-      // since these sorts of buttons just won't work if
+      // since these sorts of buttons won't work if
       // JavaScript is disabled, (hopefully) a disabled
       // attribute is set to them by default. When JavaScript
       // is on, we should remove the disabled attributes EXCEPT
@@ -59,7 +59,8 @@
       }
 
       // log an error if an aria-label or labelledby attribute
-      // is not found on a switch
+      // is not found on a switch. also add a 'data-missing-label' attribute
+      // to further call out what instance(s) are without appropriate labeling.
       if ( !self.hasAttribute('aria-label') && !self.hasAttribute('aria-labelledby') ) {
         console.log(ariaLabelError);
         self.setAttribute('data-missing-label', '');
