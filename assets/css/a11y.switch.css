@@ -1,0 +1,71 @@
+/** --------------------------------------------------------------------
+
+  ARIA Switch Button
+
+  The ARIA switch button is styled via the [data-action="aria-switch"]
+  attribute. This attribute is used instead of the [role="switch"]
+  attribute so styles may be used even when no JavaScript is available.
+
+--------------------------------------------------------------------- */
+
+[data-action="aria-switch"] {
+  background: #eee;
+  border: 1px solid;
+  border-radius: 2px;
+  display: inline-block;
+  padding: 2px 4px;
+  position: relative;
+  transition: background .1s ease-in-out;
+}
+
+[data-action="aria-switch"]:after {
+  border-radius: 2px;
+  border: 1px solid rgba(0,0,0,0);
+  bottom: -0px;
+  content: "";
+  left: -0px;
+  pointer-events: none;
+  position: absolute;
+  right: -0px;
+  top: -0px;
+  transition: all .2s ease-in-out;
+}
+
+[data-action="aria-switch"]:not([disabled]):hover,
+[data-action="aria-switch"]:not([disabled]):focus {
+  background: #fff;
+}
+
+[data-action="aria-switch"]:not([disabled]):active {
+  background: #333;
+  color: #fff;
+}
+
+[data-action="aria-switch"]:not([disabled]):hover:after,
+[data-action="aria-switch"]:not([disabled]):focus:after {
+  border: 1px solid rgba(0,0,0,1);
+  bottom: -4px;
+  left: -4px;
+  right: -4px;
+  top: -4px;
+}
+
+[data-action="aria-switch"] span {
+  border-radius: 2px;
+  display: inline-block;
+  font-weight: bold;
+  padding: 2px 4px;
+  pointer-events: none;
+  text-transform: uppercase;
+}
+
+[data-action="aria-switch"][aria-checked="true"] span:first-child {
+  background: #333;
+  color: #fff;
+}
+
+.no-js [data-action="aria-switch"]:not([aria-checked]) span:last-child,
+[data-action="aria-switch"][aria-checked="false"] span:last-child {
+  background: #333;
+  color: #fff;
+}
