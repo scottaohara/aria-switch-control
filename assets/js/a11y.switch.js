@@ -62,7 +62,7 @@
       // is not found on a switch. also add a 'data-missing-label' attribute
       // to further call out what instance(s) are without appropriate labeling.
       if ( !self.hasAttribute('aria-label') && !self.hasAttribute('aria-labelledby') ) {
-        console.log(ariaLabelError);
+        console.warn(ariaLabelError);
         self.setAttribute('data-missing-label', '');
       }
 
