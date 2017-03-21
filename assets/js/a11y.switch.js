@@ -21,9 +21,7 @@
   ARIAswitch.create = function () {
 
     // setup / cache vars
-    var doc = document;
     var self;
-    var selfID;
     var i;
 
     var ariaLabelError = 'An attribute of "data-missing-label" has been added to a switch/switches that are missing aria-labelledby or aria-label attributes! Please add unique labels to the appropriate components!';
