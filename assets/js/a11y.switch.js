@@ -77,12 +77,7 @@
 
     e.preventDefault();
 
-    if ( e.target.getAttribute('aria-checked') === 'true' ) {
-      this.setAttribute('aria-checked', 'false');
-    }
-    else {
-      this.setAttribute('aria-checked', 'true');
-    }
+    this.setAttribute('aria-checked', e.target.getAttribute('aria-checked') === 'true' ? 'false' : 'true');
 
   }; // ARIAswitch.events()
 
