@@ -21,9 +21,7 @@
   ARIAswitch.create = function () {
 
     // setup / cache vars
-    var doc = document;
     var self;
-    var selfID;
     var i;
 
     var ariaLabelError = 'An attribute of "data-missing-label" has been added to a switch/switches that are missing aria-labelledby or aria-label attributes! Please add unique labels to the appropriate components!';
@@ -62,7 +60,7 @@
       // is not found on a switch. also add a 'data-missing-label' attribute
       // to further call out what instance(s) are without appropriate labeling.
       if ( !self.hasAttribute('aria-label') && !self.hasAttribute('aria-labelledby') ) {
-        console.log(ariaLabelError);
+        console.warn(ariaLabelError);
         self.setAttribute('data-missing-label', '');
       }
 
@@ -77,12 +75,7 @@
 
     e.preventDefault();
 
-    if ( e.target.getAttribute('aria-checked') === 'true' ) {
-      this.setAttribute('aria-checked', 'false');
-    }
-    else {
-      this.setAttribute('aria-checked', 'true');
-    }
+    this.setAttribute('aria-checked', e.target.getAttribute('aria-checked') === 'true' ? 'false' : 'true');
 
   }; // ARIAswitch.events()
 
