@@ -1,5 +1,4 @@
 ;(function ( w, doc ) {
-
   //enable strict mode
   'use strict';
 
@@ -9,28 +8,24 @@
   // Meta
   ARIAswitch.NS      = "ARIAswitch";
   ARIAswitch.AUTHOR  = "Scott O'Hara";
-  ARIAswitch.VERION  = "0.1.0";
+  ARIAswitch.VERION  = "0.1.1";
   ARIAswitch.LICENSE = "https://github.com/scottaohara/accessible-components/blob/master/LICENSE.md";
-
-  var widget        = doc.querySelectorAll('[data-action="aria-switch"]');
-  var widgetCount   = widget.length;
 
 
 
   // Create switch instances
   ARIAswitch.create = function () {
-
+    var widget = doc.querySelectorAll('[data-action="aria-switch"]');
     // setup / cache vars
     var self;
     var i;
-
+    // define error message here, rather than in the weeds of the code
     var ariaLabelError = 'An attribute of "data-missing-label" has been added to a switch/switches that are missing aria-labelledby or aria-label attributes! Please add unique labels to the appropriate components!';
-
 
     // if widgets exist, loop through all instances
     // and set up appropriate attributes
-    for ( i = 0; i < widgetCount; i++ ) {
-
+    for ( i = 0; i < widget.length; i++ ) {
+      // set this specific widget
       self = widget[i];
 
       // give each instance the role of switch if the role hasn't been set
@@ -65,27 +60,24 @@
       }
 
       self.addEventListener('click', ARIAswitch.toggleState);
-    } // for(widgetCount)
-
+    } // for(widget.length)
   }; // ARIAswitch.create()
 
 
 
   ARIAswitch.toggleState = function ( e ) {
-
     e.preventDefault();
 
     this.setAttribute('aria-checked', e.target.getAttribute('aria-checked') === 'true' ? 'false' : 'true');
-
   }; // ARIAswitch.events()
 
 
 
   ARIAswitch.init = function () {
-
     ARIAswitch.create();
-
   }; // ARIAswitch.init()
+
+
 
   ARIAswitch.init();
 
