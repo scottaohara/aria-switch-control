@@ -1,22 +1,29 @@
 ;(function ( w, doc ) {
-  //enable strict mode
+  // enable strict mode
   'use strict';
-
-  // Local object for method references
+  /**
+   * Local object for method references
+   * and define script meta-data
+   */
   var ARIAswitch = {};
-
-  // Meta
   ARIAswitch.NS      = "ARIAswitch";
   ARIAswitch.AUTHOR  = "Scott O'Hara";
   ARIAswitch.VERION  = "0.1.1";
   ARIAswitch.LICENSE = "https://github.com/scottaohara/accessible-components/blob/master/LICENSE.md";
 
-
-
-  // Create switch instances
+  /**
+   * Global Create
+   *
+   * This function validates that the minimum
+   * required markup is present to create the
+   * ARIA widget(s). Any additional markup elements
+   * or attributes that do not exist in the found
+   * required markup patterns will be generated
+   * via this function.
+   */
   ARIAswitch.create = function () {
+    // hooks
     var widget = doc.querySelectorAll('[data-action="aria-switch"]');
-    // setup / cache vars
     var self;
     var i;
     // define error message here, rather than in the weeds of the code
@@ -67,7 +74,6 @@
 
   ARIAswitch.toggleState = function ( e ) {
     e.preventDefault();
-
     this.setAttribute('aria-checked', e.target.getAttribute('aria-checked') === 'true' ? 'false' : 'true');
   }; // ARIAswitch.events()
 
