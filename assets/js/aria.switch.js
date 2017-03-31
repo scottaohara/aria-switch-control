@@ -1,4 +1,4 @@
-;(function ( w, doc ) {
+;(function ( w, doc, undefined ) {
   // enable strict mode
   'use strict';
   /**
@@ -92,4 +92,4 @@
 
   ARIAswitch.init();
 
-})( this, this.document );
+})( window, document );
