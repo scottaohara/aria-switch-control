@@ -6,10 +6,12 @@
    * and define script meta-data
    */
   var ARIAswitch = {};
-  ARIAswitch.NS      = "ARIAswitch";
-  ARIAswitch.AUTHOR  = "Scott O'Hara";
-  ARIAswitch.VERION  = "0.1.1";
-  ARIAswitch.LICENSE = "https://github.com/scottaohara/accessible-components/blob/master/LICENSE.md";
+  w.ARIAswitch = ARIAswitch;
+
+  ARIAswitch.NS      = 'ARIAswitch';
+  ARIAswitch.AUTHOR  = 'Scott O\'Hara';
+  ARIAswitch.VERION  = '0.2.0';
+  ARIAswitch.LICENSE = 'https://github.com/scottaohara/accessible-components/blob/master/LICENSE.md';
 
   /**
    * Global Create
@@ -63,22 +65,25 @@
       // to further call out what instance(s) are without appropriate labeling.
       if ( !self.hasAttribute('aria-label') && !self.hasAttribute('aria-labelledby') ) {
         console.warn(ariaLabelError);
-        self.setAttribute('data-missing-label', '');
       }
 
-      self.addEventListener('click', ARIAswitch.toggleState);
+      self.addEventListener('click', ARIAswitch.actions);
     } // for(widget.length)
   }; // ARIAswitch.create()
 
 
 
-  ARIAswitch.toggleState = function ( e ) {
+  // primary actions function
+  ARIAswitch.actions = function ( e ) {
     e.preventDefault();
     this.setAttribute('aria-checked', e.target.getAttribute('aria-checked') === 'true' ? 'false' : 'true');
   }; // ARIAswitch.events()
 
 
 
+  // init function to run start-up functions.
+  // if expanding this script, place any other
+  // initialize functions within here.
   ARIAswitch.init = function () {
     ARIAswitch.create();
   }; // ARIAswitch.init()
