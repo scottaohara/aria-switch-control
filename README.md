@@ -1,6 +1,5 @@
 # ARIA Switch Button
-
-Similar to a toggle button or checkbox, a switch button is meant to be used when its visual appearance most resembles an "on / off" switch.
+Similar to a toggle button or checkbox, a switch button is meant to be used when its visual appearance most resembles an "on / off" switch. Additionally, the expected user experience of a switch button is for an immedite action to take place, where as with a checkbox, a change any change is typically understood to occur after a form submission.
 
 For more information about the Switch Role, please see:  
 * [Switch Role Accessible Rich Internet Applications (WAI-ARIA) 1.1, Specification](https://www.w3.org/TR/wai-aria-1.1/#switch)  
@@ -8,7 +7,6 @@ For more information about the Switch Role, please see:
 
 
 ## How does it work?
-
 The baseline for this component requires the following markup:
 
 ```html
@@ -18,7 +16,7 @@ The baseline for this component requires the following markup:
   aria-checked="false"
   aria-labelledby="ID_HERE"
   disabled>
-  ...
+  <!-- Meaningful label here -->
 </button>
 ```
 
@@ -34,7 +32,6 @@ Use the ```aria-labelledby``` to point to a text label that this switch will con
 
 
 ### License & Such
-
 This script was written by [Scott O'Hara](https://twitter.com/scottohara).
 
 It has an [MIT](https://github.com/scottaohara/accessible-components/blob/master/LICENSE.md) license.
