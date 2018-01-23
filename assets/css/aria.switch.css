@@ -51,24 +51,20 @@
 }
 
 [data-action="aria-switch"] span {
-  border: 2px solid transparent;
   border-radius: 2px;
   display: inline-block;
   font-weight: bold;
+  margin: 2px;
   padding: 2px 4px;
   pointer-events: none;
   text-transform: uppercase;
 }
 
-[data-action="aria-switch"][aria-checked="true"] span:first-child {
-  background: #333;
-  border-color: #333;
-  color: #fff;
-}
-
+[data-action="aria-switch"][aria-checked="true"] span:first-child,
 .no-js [data-action="aria-switch"]:not([aria-checked]) span:last-child,
 [data-action="aria-switch"][aria-checked="false"] span:last-child {
   background: #333;
-  border-color: #333;
+  border: 2px solid #333;
+  margin: 0;
   color: #fff;
 }
