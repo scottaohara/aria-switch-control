@@ -41,7 +41,7 @@ Use the `aria-labelledby` to point to a text label that this switch will control
 Currently there is no fall back for setting an appropriate label or labelledby value to this component, if one is not manually set. Instead a console error is purposefully left in the script to alert developers of this failure for when a switch is missing these attributes.
 
 
-### License & Such
+## License & Such
 This script was written by [Scott O'Hara](https://twitter.com/scottohara).
 
 It has an [MIT](https://github.com/scottaohara/aria-switch-button/blob/master/LICENSE) license.
