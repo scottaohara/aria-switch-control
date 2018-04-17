@@ -1,8 +1,15 @@
 # ARIA Switch Button
-Similar to a toggle button or checkbox, a switch button is meant to be used when its visual appearance most resembles an "on / off" toggle.  
-Additionally, the expected user experience of a switch button is for an immediate action to take place. In contrast, when interacting with a checkbox, any change in UI state is typically expected to occur after a form submission.  [See related WCAG success criteria "on input"](https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-unpredictable-change.html).
+Similar to a toggle button or checkbox, a switch button is meant to be used when its visual appearance most resembles an "on and off" "switch".  
 
-For more information about the Switch Role, please see:  
+The expected user experience of a switch button is for an immediate action to take place. For instance, toggling a light/dark theme for a site or application, where the theme change instantly takes effect. 
+
+In contrast, when interacting with a checkbox, any change in UI state is typically expected to occur after a purposeful form submission by the user.  [See related WCAG success criteria "on input"](https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-unpredictable-change.html).
+
+A toggle button and switch may seem similar in functionality and purpose, but their differences become more apparent if you focus on the semantics, typical visual treatments, and announcements of each.
+
+In browsers and screen readers that support both elements, a toggle button is typically announced as "pressed" in its active state, where a switch is announced as "on".  A toggle button may be grouped within a series of toggle buttons, where activating one may deactivate another. A switch ideally is an independent UI component, and should not be modified by outside controls. 
+
+For more information about the Switch Role, and its differences to toggle buttons and checkboxes, please visit:  
 * [Switch Role Accessible Rich Internet Applications (WAI-ARIA) 1.1, Specification](https://www.w3.org/TR/wai-aria-1.1/#switch)  
 * [Inclusive Components: Toggle Button Article](http://inclusive-components.club/toggle-button/)  
 
@@ -37,6 +44,6 @@ Currently there is no fall back for setting an appropriate label or labelledby v
 ### License & Such
 This script was written by [Scott O'Hara](https://twitter.com/scottohara).
 
-It has an [MIT](https://github.com/scottaohara/accessible-components/blob/master/LICENSE.md) license.
+It has an [MIT](https://github.com/scottaohara/aria-switch-button/blob/master/LICENSE) license.
 
 Do with it what you will :)
