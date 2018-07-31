@@ -1,5 +1,4 @@
 ;(function ( w, doc, undefined ) {
-  // enable strict mode
   'use strict';
   /**
    * Local object for method references
