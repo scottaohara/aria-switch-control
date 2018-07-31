@@ -10,7 +10,7 @@
   ARIAswitch.NS      = 'ARIAswitch';
   ARIAswitch.AUTHOR  = 'Scott O\'Hara';
   ARIAswitch.VERION  = '0.2.0';
-  ARIAswitch.LICENSE = 'https://github.com/scottaohara/accessible-components/blob/master/LICENSE.md';
+  ARIAswitch.LICENSE = 'https://github.com/scottaohara/aria-switch-button/blob/master/LICENSE';
 
   /**
    * Global Create
@@ -71,13 +71,11 @@
   }; // ARIAswitch.create()
 
 
-
   // primary actions function
   ARIAswitch.actions = function ( e ) {
     e.preventDefault();
     this.setAttribute('aria-checked', e.target.getAttribute('aria-checked') === 'true' ? 'false' : 'true');
   }; // ARIAswitch.events()
-
 
 
   // init function to run start-up functions.
@@ -86,7 +84,6 @@
   ARIAswitch.init = function () {
     ARIAswitch.create();
   }; // ARIAswitch.init()
-
 
 
   ARIAswitch.init();
