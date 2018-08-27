@@ -9,7 +9,7 @@
 
   ARIAswitch.NS      = 'ARIAswitch';
   ARIAswitch.AUTHOR  = 'Scott O\'Hara';
-  ARIAswitch.VERION  = '0.2.0';
+  ARIAswitch.VERION  = '0.3.0';
   ARIAswitch.LICENSE = 'https://github.com/scottaohara/aria-switch-button/blob/master/LICENSE';
 
   /**
@@ -51,6 +51,17 @@
       // and DON'T remove that disabled attribute...
       if ( !self.hasAttribute('data-keep-disabled') ) {
         self.removeAttribute('disabled');
+        self.removeAttribute('aria-disabled');
+      }
+
+      // If the base element is not a button, give it a tabIndex so it can be keyboard focused.
+      if ( self.tagName !== 'BUTTON' ) {
+        if ( self.getAttribute('aria-disabled') === 'true' ) {
+          self.tabIndex = '-1';
+        }
+        else {
+          self.tabIndex = 0;
+        }
       }
 
       // if an instance doesn't have a set aria-checked attribute,
@@ -67,6 +78,7 @@
       }
 
       self.addEventListener('click', ARIAswitch.actions);
+      self.addEventListener('keypress', ARIAswitch.keyEvents, false);
     } // for(widget.length)
   }; // ARIAswitch.create()
 
@@ -76,6 +88,33 @@
     e.preventDefault();
     this.setAttribute('aria-checked', e.target.getAttribute('aria-checked') === 'true' ? 'false' : 'true');
   }; // ARIAswitch.events()
+
+
+  /**
+   * Attach keyEvents to toggle buttons
+   */
+  ARIAswitch.keyEvents = function ( e ) {
+    var keyCode = e.keyCode || e.which;
+
+    /**
+     * If the element is not a real button, then
+     * map the appropriate key commands.  If it is,
+     * well buttons' already know how to do this then :)
+     */
+    if ( e.target.tagName !== 'BUTTON' ) {
+      switch ( keyCode ) {
+        case 32:
+        case 13:
+          e.stopPropagation();
+          e.preventDefault();
+          e.target.click();
+          break;
+
+        default:
+          break;
+      }
+    }
+  };
 
 
   // init function to run start-up functions.

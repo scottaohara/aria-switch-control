@@ -31,6 +31,11 @@
   transition: all .2s ease-in-out;
 }
 
+[data-action="aria-switch"][disabled],
+[data-action="aria-switch"][aria-disabled="true"] {
+  opacity: .65;
+}
+
 [data-action="aria-switch"]:not([disabled]):hover,
 [data-action="aria-switch"]:not([disabled]):focus {
   background: #fff;
@@ -65,6 +70,6 @@
 [data-action="aria-switch"][aria-checked="false"] span:last-child {
   background: #333;
   border: 2px solid #333;
-  margin: 0;
   color: #fff;
+  margin: 0;
 }

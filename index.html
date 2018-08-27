@@ -32,7 +32,7 @@
             <h1>
               <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Switch Demo
             </h1>
-            <p>Last updated: <time>April 17, 2018</time></p>
+            <p>Last updated: <time>August 27, 2018</time></p>
             <p>
               Examples of <abbr>ARIA</abbr> Switch buttons.
             </p>
@@ -48,28 +48,10 @@
             aria-checked="true"
             role="switch"
             disabled>
-            <span>
+            <span aria-hidden="true">
               On
             </span>
-            <span>
-              Off
-            </span>
-          </button>
-
-          <hr>
-
-          <p id="ex_label">
-            Item 2
-          </p>
-          <button type="button"
-            data-action="aria-switch"
-            aria-labelledby="ex_label"
-            aria-checked="false"
-            disabled>
-            <span>
-              On
-            </span>
-            <span>
+            <span aria-hidden="true">
               Off
             </span>
           </button>
@@ -77,17 +59,17 @@
           <hr>
 
           <p id="ex_label2">
-            Item 3 (purposefully disabled)
+            Item 2
           </p>
           <button type="button"
             data-action="aria-switch"
             aria-labelledby="ex_label2"
-            data-keep-disabled
+            aria-checked="false"
             disabled>
-            <span>
+            <span aria-hidden="true">
               On
             </span>
-            <span>
+            <span aria-hidden="true">
               Off
             </span>
           </button>
@@ -95,19 +77,55 @@
           <hr>
 
           <p id="ex_label3">
+            Item 3 (purposefully disabled)
+          </p>
+          <button type="button"
+            data-action="aria-switch"
+            aria-labelledby="ex_label3"
+            data-keep-disabled
+            disabled>
+            <span aria-hidden="true">
+              On
+            </span>
+            <span aria-hidden="true">
+              Off
+            </span>
+          </button>
+
+          <hr>
+
+          <p id="ex_label4">
             Item 4 (purposefully missing aria-label)
           </p>
           <button type="button"
             data-action="aria-switch"
             aria-checked="false"
             disabled>
-            <span>
+            <span aria-hidden="true">
               On
             </span>
-            <span>
+            <span aria-hidden="true">
               Off
             </span>
           </button>
+
+          <hr>
+
+          <p id="ex_label5">
+            Item 5
+          </p>
+          <span
+            aria-labelledby="ex_label5"
+            data-action="aria-switch"
+            aria-checked="false"
+            aria-disabled="true">
+            <span aria-hidden="true">
+              On
+            </span>
+            <span aria-hidden="true">
+              Off
+            </span>
+          </span>
 
           <section class="demo-details">
             <h3>
@@ -129,6 +147,11 @@
             <p>
               For more information on the JavaScript and markup used here, please see the
               <a href="https://github.com/scottaohara/aria-switch-button">readme on the GitHub repo for this pattern</a>.
+            </p>
+
+            <h4>Usage note</h4>
+            <p>
+              There are various issues with screen readers and ARIA switches listed in the <a href="https://github.com/scottaohara/aria-switch-button">README</a>. Please review them before using this pattern to create switch components.
             </p>
 
           </section>
