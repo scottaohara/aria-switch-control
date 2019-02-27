@@ -41,14 +41,7 @@ Use the `aria-labelledby` to point to a text label that this switch will control
 Currently there is no fall back for setting an appropriate label or labelledby value to this component, if one is not manually set. Instead a console error is purposefully left in the script to alert developers of this failure for when a switch is missing these attributes.
 
 ## Screen Reader Quirks
-Note that since 2017, and tested again with VoiceOver on iOS 11.3 & 11.4, VoiceOver continues to have issues with `role="switch"` elements. VoiceOver will fall back to announcing switches as checkboxes, but with bugged behavior, where the state is not announced.
-
-JAWS 2018 + IE11 also experience issues with switches.
-
-NVDA 2018.2.1 + FireFox and Chrome will announce elements with `role="switch"` as "not pressed" and then announce whether they are checked or not. It doesn't matter the current state of whether the switch is checked or not, it will always announce "not pressed."  This can be incredibly confusing to determine the actual state of these elements since both checked and pressed states are announced.
-
-Depending on your audience and the devices / browsers they use, you may want to use caution before fully embracing switches without suitable fall backs.
-
+Rather than updating this information in multiple places, please [review the breakdown of screen reader issues with `role="switch"`](https://scottaohara.github.io/a11y_styled_form_controls/src/checkbox--switch/#affects_on_sr).  While this particular link goes to an example of using `role=switch` on a checkbox, the same issues occur if using `role=switch` on a `button` element as well.
 
 ## License & Such
 This script was written by [Scott O'Hara](https://twitter.com/scottohara).
