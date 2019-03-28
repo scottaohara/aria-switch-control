@@ -43,6 +43,8 @@ Currently there is no fall back for setting an appropriate label or labelledby v
 ## Screen Reader Quirks
 Rather than updating this information in multiple places, please [review the breakdown of screen reader issues with `role="switch"`](https://scottaohara.github.io/a11y_styled_form_controls/src/checkbox--switch/#affects_on_sr).  While this particular link goes to an example of using `role=switch` on a checkbox, the same issues occur if using `role=switch` on a `button` element as well.
 
+**Note: With the release of iOS 12.2 (March 2019) the announcement of state has been fixed. VoiceOver will still announce `role="switch"` as checkboxes, but at least the checked/unchecked states are correctly announced.**
+
 ## License & Such
 This script was written by [Scott O'Hara](https://twitter.com/scottohara).
 
