@@ -1,44 +1,53 @@
 # ARIA Switch Button
 Similar to a toggle button or checkbox, a switch button is meant to be used when its visual appearance most resembles an "on and off" "switch".  
 
-The expected user experience of a switch button is for an immediate action to take place. For instance, toggling a light/dark theme for a site or application, where the theme change instantly takes effect. 
+The expected user experience of a switch button is for an immediate action to take place. For instance, toggling a light/dark theme for a website or application, where the change instantly takes effect. 
 
-In contrast, when interacting with a checkbox, any change in UI state is typically expected to occur after a purposeful form submission by the user.  [See related WCAG success criteria "on input"](https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-unpredictable-change.html).
+In contrast, when interacting with a checkbox, any change in UI state is typically expected to occur after a purposeful form submission by the user.  [See potentially related WCAG success criteria "on input"](https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-unpredictable-change.html).
 
-A toggle button and switch may seem similar in functionality and purpose, but their differences become more apparent if you focus on the semantics, typical visual treatments, and announcements of each.
+A toggle button and switch are a bit more similar in that they both have an expectation for an immediate change from user interaction. Their primary differences revolve around the manner in which they are supposed to communicate state to assistive technology users, as well as the visual design they each may be most associated with.
 
-In browsers and screen readers that support both elements, a toggle button is typically announced as "pressed" in its active state, where a switch is announced as "on".  A toggle button may be grouped within a series of toggle buttons, where activating one may deactivate another. A switch ideally is an independent UI component, and should not be modified by outside controls. 
-
-For more information about the Switch Role, and its differences to toggle buttons and checkboxes, please visit:  
-* [Switch Role Accessible Rich Internet Applications (WAI-ARIA) 1.1, Specification](https://www.w3.org/TR/wai-aria-1.1/#switch)  
-* [Inclusive Components: Toggle Button Article](http://inclusive-components.club/toggle-button/)  
+A toggle button is typically announced as "pressed" or "selected" in its active state, where a switch should be announced as "on".  
 
 
 ## How does it work?
-The baseline for this component requires the following markup:
+The baseline for this component requires one of the following markup patterns:
 
+### Start as a `button`
 ```html
-<button type="button" 
-  data-action="aria-switch"
-  role="switch"
-  aria-checked="false"
-  aria-labelledby="ID_HERE"
-  disabled>
+<button data-switch class="class_here" disabled>
   <!-- Meaningful label here -->
 </button>
 ```
 
-The `data-action="aria-switch"` is required for the switch component to work. All setup and functionality is based around this attribute.  
+### Start as a checkbox
+```html
+<label class="class_here">
+  <input type="checkbox" data-switch>
+  <!-- Meaningful label here -->
+</label>
+```
 
-The reason for the button being disabled by default is that this component requires JavaScript to function. Without JavaScript, users should be aware there is a component that is currently unusable. When JavaScript is enabled, the `disabled` attribute will be removed from the switch, unless a `data-keep-disabled` attribute is present.
 
-`role="switch"` is required to accurately announce this component by screen readers that support the switch role. If this attribute is missing, or if it is set to another role, the JavaScript will update it to the appropriate switch value.  
+### Start as a `div` or `span`
+```html
+<div class="class_here" data-switch hidden>
+  <!-- Meaningful label here -->
+</div>
+```
 
-An `aria-checked` attribute should be set to announce the current state of the switch. If this attribute is not present, the script will default to setting an `aria-checked="false"`, but that's not helpful for users with blocked JavaScript. So again, remember to set this attribute.
+### Initial Attribute Breakdown
+`data-switch` is required for each markup pattern to be successfully transformed into a `role="switch"`. All setup and functionality is based around this attribute.  The attribute can be set without a value, to default a switch to the "off" state.  Setting the value to "on", e.g. `data-switch="on` will default the switch to the "on" state. (Note, if using a checkbox as the base markup element, and the `checked` attribute will also set the switch to be "on" by default, even if `data-switch` has no value.)
 
-Use the `aria-labelledby` to point to a text label that this switch will control the state of. If a visible label is not present (e.g. you're using an icon of some sort, or somehow it's visually apparent what this switch does without a visible label), be sure to use an `aria-label` instead to give context as to what this switch is toggling on/off. 
+You may notice that the non-checkbox patterns have a `disabled` or `hidden` attribute set by default.  This is due to the fact that these patterns will not function without JavaScript. So instead of rendering a partially created control, or an control that doesn't function, they can be set to disabled (button) or hidden (non-interactive element).
 
-Currently there is no fall back for setting an appropriate label or labelledby value to this component, if one is not manually set. Instead a console error is purposefully left in the script to alert developers of this failure for when a switch is missing these attributes.
+If for some reason a switch should be disabled on initial load, use the `data-keep-disabled` to stop the script from removing the `disabled` (`aria-disabled`) or `hidden` attributes.
+
+### Attributes added by JavaScript
+The JavaScript will add a `role="switch"` to the element with `data-switch`.  
+
+An `aria-checked` attribute will be set to communicate the current state of the switch, if the switch is not based on a checkbox. If the base element is a checkbox, then the native `checked` attribute will be used instead.
+
 
 ## Screen Reader Quirks
 Rather than updating this information in multiple places, please [review the breakdown of screen reader issues with `role="switch"`](https://scottaohara.github.io/a11y_styled_form_controls/src/checkbox--switch/#affects_on_sr).  While this particular link goes to an example of using `role=switch` on a checkbox, the same issues occur if using `role=switch` on a `button` element as well.
