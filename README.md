@@ -28,8 +28,7 @@ The baseline for this component requires one of the following markup patterns:
 </label>
 ```
 
-
-### Start as a `div` or `span`
+### Start as a `div` or some other element
 ```html
 <div class="class_here" data-switch hidden>
   <!-- Meaningful label here -->

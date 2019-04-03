@@ -1,0 +1,73 @@
+/** --------------------------------------------------------------------
+
+  ARIA Switch On / Off button.
+
+  These styles have not been formatted to work with a
+  checkbox that has been modified into a role=switch, and
+  presently require a parent / child relationship, rather than
+  a sibling relationship as a "checkbox + element" would provide.
+
+--------------------------------------------------------------------- */
+
+.on-off-switch {
+  align-items: center;
+  color: #111;
+  cursor: default;
+  display: flex;
+  font-weight: normal;
+  justify-content: space-between;
+}
+
+/* hover/focus is applied to the span within instead */
+.on-off-switch:hover,
+.on-off-switch:focus {
+  outline: 0;
+}
+
+.on-off-switch span {
+  background: #eee;
+  border-radius: 2px;
+  border: 1px solid;
+  display: inline-block;
+  outline-offset: 0px;
+  outline: 0px solid;
+  padding: .25rem;
+  pointer-events: none;
+  position: relative;
+}
+
+.on-off-switch span:before,
+.on-off-switch span:after {
+  border-radius: 2px;
+  display: inline-block;
+  min-width: 4ch;
+  text-align: center;
+}
+
+.on-off-switch span:before {
+  content: "On";
+}
+
+.on-off-switch span:after {
+  content: "Off";
+}
+
+.on-off-switch[disabled],
+.on-off-switch[aria-disabled="true"] {
+  opacity: .65;
+  pointer-events: none;
+}
+
+.on-off-switch:hover span,
+.on-off-switch:focus span {
+  background: #fff;
+  outline: 2px solid #2196f3;
+  outline-offset: 2px;
+}
+
+.on-off-switch[aria-checked="true"] span:before,
+.on-off-switch[aria-checked="false"] span:after {
+  background: #333;
+  color: #fff;
+  margin: 0;
+}

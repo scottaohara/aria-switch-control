@@ -3,14 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <title>ARIA Switch Button</title>
+    <title>ARIA Switch Controls</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>
       document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
     </script>
     <link rel="stylesheet" href="https://scottaohara.github.io/a11y_styled_form_controls/src/assets/css/--demo-only--.css">
     <link rel="stylesheet" href="https://scottaohara.github.io/a11y_styled_form_controls/src/assets/css/--shared--.css">
-    <link rel="stylesheet" href="assets/css/aria.switch.css">
+    <link rel="stylesheet" href="assets/css/on-off-switch.css">
+    <link rel="stylesheet" href="assets/css/toggle-switch.css">
+    <link rel="stylesheet" href="assets/css/check-switch.css">
   </head>
 
   <body id="body">
@@ -32,100 +34,46 @@
             <h1>
               <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Switch Demo
             </h1>
-            <p>Last updated: <time>February 27, 2019</time></p>
+            <p>Published: <time>March 20, 2017</time></p>
+            <p>Last updated: <time>April 3, 2019</time></p>
             <p>
               Examples of <abbr>ARIA</abbr> Switch controls.
             </p>
           </header>
 
           <h2>
-            Pattern Demo
+            Pattern Demos
           </h2>
 
-          <button type="button"
-            data-action="aria-switch"
-            aria-label="Item 1"
-            aria-checked="true"
-            role="switch"
-            disabled>
-            <span aria-hidden="true">
-              On
-            </span>
-            <span aria-hidden="true">
-              Off
-            </span>
+          <button data-switch class="switch-toggle" data-switch-labels disabled>
+            Dark mode
+          </button>
+
+          <p><b>No labels</b></p>
+          <button data-switch class="switch-toggle" hidden>
+            Dark mode
           </button>
 
           <hr>
 
-          <p id="ex_label2">
-            Item 2
-          </p>
-          <button type="button"
-            data-action="aria-switch"
-            aria-labelledby="ex_label2"
-            aria-checked="false"
-            disabled>
-            <span aria-hidden="true">
-              On
-            </span>
-            <span aria-hidden="true">
-              Off
-            </span>
-          </button>
+          <div class="on-off-switch" data-switch hidden>
+            Use large fonts
+          </div>
 
           <hr>
 
-          <p id="ex_label3">
-            Item 3 (purposefully disabled)
-          </p>
-          <button type="button"
-            data-action="aria-switch"
-            aria-labelledby="ex_label3"
-            data-keep-disabled
-            disabled>
-            <span aria-hidden="true">
-              On
-            </span>
-            <span aria-hidden="true">
-              Off
-            </span>
-          </button>
+          <p><b>Disabled example:</b></p>
+          <a href="#" data-keep-disabled aria-disabled="true" class="on-off-switch" data-switch>
+            Use legible fonts
+          </a>
 
           <hr>
 
-          <p id="ex_label4">
-            Item 4 (purposefully missing aria-label)
-          </p>
-          <button type="button"
-            data-action="aria-switch"
-            aria-checked="false"
-            disabled>
-            <span aria-hidden="true">
-              On
-            </span>
-            <span aria-hidden="true">
-              Off
-            </span>
-          </button>
+          <label class="check-switch">
+            <input type="checkbox" data-switch>
+            Enable something
+          </label>
 
-          <hr>
-
-          <p id="ex_label5">
-            Item 5
-          </p>
-          <span
-            aria-labelledby="ex_label5"
-            data-action="aria-switch"
-            aria-checked="false"
-            aria-disabled="true">
-            <span aria-hidden="true">
-              On
-            </span>
-            <span aria-hidden="true">
-              Off
-            </span>
-          </span>
 
           <section class="demo-details">
             <h3>
@@ -141,7 +89,7 @@
             </p>
 
             <p>
-              For a more traditional visual style of a switch UI, as well as further information about switches and how screen readers interpret them, please review <a href="https://scottaohara.github.io/a11y_styled_form_controls/src/checkbox--switch/">the checkbox switch pattern</a>.
+              For more information about switches and how screen readers interpret them, please review <a href="https://scottaohara.github.io/a11y_styled_form_controls/src/checkbox--switch/">the checkbox switch pattern</a>.
             </p>
 
             <p>
@@ -151,9 +99,9 @@
 
             <h4>Usage note</h4>
             <p>
-              Presently there are 
-              <a href="https://scottaohara.github.io/a11y_styled_form_controls/src/checkbox--switch/#affects_on_sr">issues with screen readers and ARIA switches</a>. 
-               
+              Presently there are
+              <a href="https://scottaohara.github.io/a11y_styled_form_controls/src/checkbox--switch/#affects_on_sr">issues with screen readers and ARIA switches</a>.
+
               Please review them to determine if a <code>role=switch</code> will be suitable for your project
               or if an alternative control may be appropriate, due to better support.
             </p>
@@ -172,6 +120,15 @@
       </main>
 
     </div>
-    <script src="assets/js/aria.switch.js"></script>
+    <script src="index.js"></script>
+    <script>
+      var selector = '[data-switch]';
+      var els = document.querySelectorAll(selector);
+      var i;
+
+      for ( var i = 0; i < els.length; i++ ) {
+        var dis = new ARIAswitch( els[i] );
+      }
+    </script>
   </body>
 </html>
