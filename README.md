@@ -1,4 +1,4 @@
-# ARIA Switch Button
+# ARIA Switch Control
 Similar to a toggle button or checkbox, a switch control is meant to be used when its visual appearance most resembles an "on and off" "switch".  
 
 The expected user experience of a switch control is for an immediate action to take place. For instance, toggling a light/dark theme for a website or application, where the change should instantly take effect. 
