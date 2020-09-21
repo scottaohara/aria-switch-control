@@ -144,7 +144,10 @@ var util = {
     var addEvents = function () {
       if ( !isDisabled ) {
         el.addEventListener('click', toggleState, false);
-        el.addEventListener('keypress', keyToggle, false);
+
+        if ( el.tagName !== 'BUTTON' ) {
+          el.addEventListener('keypress', keyToggle, false);
+        }
       }
     }; // addEvents()
 
