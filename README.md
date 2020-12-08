@@ -3,7 +3,7 @@ Similar to a toggle button or checkbox, a switch control is meant to be used whe
 
 The expected user experience of a switch control is for an immediate action to take place. For instance, toggling a light/dark theme for a website or application, where the change should instantly take effect. 
 
-A checkbox, which is often found within a form, or in other UI where multiple elements can be checked, may not be understood to enact an immediate change to other elements in the document. That's not to say additional information couldn't be presented to the user to indicate such functionality, but it's not a standard expectation.  [See potentially related WCAG success criteria "on input"](https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-unpredictable-change.html).
+A checkbox, which is often found within a form, or in other UI where multiple elements can be checked, may not be understood to enact an immediate change to other elements or content in the document/screen. That's not to say additional information couldn't be presented to the user to indicate such functionality for a checkbox, but it's not a standard expectation.  
 
 A toggle button and switch are a bit more similar in that they both have an expectation for an immediate change from user interaction. Their primary differences revolve around the manner in which they are supposed to communicate state to assistive technology users, as well as the visual design they each may be most associated with.
 
