@@ -75,7 +75,7 @@
             </h3>
 
             <details>
-              <summary>Pattern Markup</summary>
+              <summary>Pattern Markup (before script runs)</summary>
               <pre><code>&lt;button data-switch
   class="switch-toggle"
   data-switch-labels
@@ -105,6 +105,68 @@
   data-switch
 >
   Enable something else
+&lt;/a></code></pre>
+            </details>
+            
+            <details>
+              <summary>Pattern Markup (after script runs)</summary>
+              <pre><code>&lt;button data-switch 
+  class="switch-toggle" 
+  data-switch-labels 
+  role="switch" 
+  aria-checked="false"
+>
+  Dark mode
+  &lt;span aria-hidden="true" class="show-labels">&lt;/span>
+&lt;/button>
+
+
+&lt;span data-switch 
+  class="switch-toggle" 
+  role="switch" 
+  tabindex="0" 
+  aria-checked="false"
+>
+  Dark mode (no visible state labels)
+  &lt;span aria-hidden="true">&lt;/span>
+&lt;/span>
+
+
+&lt;label class="check-switch">
+  &lt;input type="checkbox" 
+    data-switch 
+    data-keep-disabled 
+    disabled 
+    role="switch"
+  >
+  Enable dark mode
+  &lt;span aria-hidden="true">&lt;/span>
+&lt;/label>
+
+
+&lt;div class="on-off-switch" 
+  data-switch 
+  id="enabler" 
+  role="switch"
+  tabindex="0" 
+  aria-checked="false"
+>
+  Enable the next switch
+  &lt;span aria-hidden="true">&lt;/span>
+&lt;/div>
+
+
+&lt;a id="target" 
+  data-keep-disabled 
+  aria-disabled="true" 
+  class="on-off-switch" 
+  data-switch 
+  role="switch" 
+  tabindex="-1" 
+  aria-checked="false"
+>
+  Enable something else
+  &lt;span aria-hidden="true">&lt;/span>
 &lt;/a></code></pre>
             </details>
 
