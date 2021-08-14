@@ -1,34 +1,3 @@
-// for ie nonsense
-if (typeof Object.assign != 'function') {
-  // Must be writable: true, enumerable: false, configurable: true
-  Object.defineProperty(Object, "assign", {
-    value: function assign(target, varArgs) { // .length of function is 2
-      'use strict';
-      if (target == null) { // TypeError if undefined or null
-        throw new TypeError('Cannot convert undefined or null to object');
-      }
-
-      var to = Object(target);
-
-      for (var index = 1; index < arguments.length; index++) {
-        var nextSource = arguments[index];
-
-        if (nextSource != null) { // Skip over if undefined or null
-          for (var nextKey in nextSource) {
-            // Avoid bugs when hasOwnProperty is shadowed
-            if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
-              to[nextKey] = nextSource[nextKey];
-            }
-          }
-        }
-      }
-      return to;
-    },
-    writable: true,
-    configurable: true
-  });
-}
-
 // add utilities
 var util = {
   keyCodes: {
@@ -47,8 +16,8 @@ var util = {
    * A11Y ARIA Switch
    *
    * Author: Scott O'Hara
-   * Version: 1.0.0
-   * License: https://github.com/scottaohara/aria-switch-button/blob/master/LICENSE
+   * Version: 2.0.0
+   * License: https://github.com/scottaohara/aria-switch-control/blob/main/LICENSE
    */
   var ARIAswitchOptions = {
     baseID: 'aria_switch',
@@ -65,7 +34,6 @@ var util = {
     var keepDisabledState;
     var initState;
     var isCheckbox;
-    var isDisabled = true;
 
 
     /**
@@ -101,21 +69,20 @@ var util = {
         el.removeAttribute('href');
       }
 
-
       if ( !keepDisabledState ) {
         el.hidden = false;
         el.disabled = false;
         el.removeAttribute('aria-disabled');
-        isDisabled = false;
       }
 
-      // if not a BUTTON or INPUT
-      if ( el.tagName !== 'BUTTON' && el.tagName !== 'INPUT' ) {
-        if ( !el.hasAttribute('aria-disabled') ) {
+      if ( el.hasAttribute('aria-disabled') ) {
+        el.tabIndex = -1;
+      }
+      else {
+        // if not a BUTTON or INPUT since those are focusable
+        // by default
+        if ( el.tagName !== 'BUTTON' && el.tagName !== 'INPUT' ) {
           el.tabIndex = 0;
-        }
-        else {
-          el.tabIndex = -1;
         }
       }
     };
@@ -142,15 +109,12 @@ var util = {
      * Add click and keypress events to elements
      */
     var addEvents = function () {
-      if ( !isDisabled ) {
-        el.addEventListener('click', toggleState, false);
+      el.addEventListener('click', toggleState, false);
 
-        if ( el.tagName !== 'BUTTON' ) {
-          el.addEventListener('keypress', keyToggle, false);
-        }
+      if ( el.tagName !== 'BUTTON' ) {
+        el.addEventListener('keypress', keyToggle, false);
       }
     }; // addEvents()
-
 
 
     /**
@@ -184,9 +148,11 @@ var util = {
      * aria-checked.
      */
     var toggleState = function ( e ) {
-      if ( (el || {}).type !== 'checkbox' ) {
-        e.preventDefault();
-        el.setAttribute('aria-checked', el.getAttribute('aria-checked') === 'true' ? 'false' : 'true');
+      if ( !el.hasAttribute('aria-disabled') ) {
+        if ( (el || {}).type !== 'checkbox' ) {
+          e.preventDefault();
+          el.setAttribute('aria-checked', el.getAttribute('aria-checked') === 'true' ? 'false' : 'true');
+        }
       }
     }; // toggleState()
 
@@ -212,12 +178,13 @@ var util = {
        * Checkboxes don't allow for Enter key to activate
        * by default. However, "switches" do have this
        * expectation, especially since they can be announced
-       * as toggle buttons in some situations.
+       * as toggle buttons with some screen reader / browser pairings.
        */
       if ( (el || {}).type === 'checkbox' ) {
         switch ( keyCode ) {
           case util.keyCodes.ENTER:
-            el.click();
+            e.preventDefault();
+            this.click()
             break;
 
           default:
@@ -226,9 +193,7 @@ var util = {
       }
     } // keyToggle()
 
-
     init.call( this );
-
     return this;
   }; // ARIAswitch()
 
