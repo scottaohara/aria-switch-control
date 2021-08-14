@@ -1,11 +1,12 @@
 /** --------------------------------------------------------------------
 
-  ARIA Switch Toggle button.
+  ARIA Switch Toggle Button
 
 --------------------------------------------------------------------- */
 .switch-toggle {
   background: none;
   border: none;
+  cursor: default;
   display: block;
   font-size: inherit;
   line-height: 1;
@@ -60,8 +61,9 @@
   pointer-events: none;
 }
 
-.switch-toggle:hover span:before,
-.switch-toggle:focus span:before {
+
+.switch-toggle:not([data-keep-disabled]):hover span:before,
+.switch-toggle:not([data-keep-disabled]):focus span:before {
   outline: 2px solid #2196f3;
   outline-offset: 2px;
 }
@@ -74,6 +76,11 @@
 /* update the color of the "container" to further visually indicate state */
 .switch-toggle[aria-checked="true"] span:before {
   background: #2196f3;
+}
+
+.switch-toggle[disabled] span,
+.switch-toggle[aria-disabled="true"] span {
+  opacity: .65;
 }
 
 /**
