@@ -2,7 +2,6 @@
 <html lang="en-us" class="no-js">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <title>ARIA Switch Controls</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>
@@ -32,53 +31,82 @@
         <article class="demo">
           <header>
             <h1>
-              <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Switch Demo
+              <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Switch Demos
             </h1>
-            <p>Published: <time>March 20, 2017</time></p>
-            <p>Last updated: <time>September 21, 2020</time></p>
-            <p>
-              Examples of <abbr>ARIA</abbr> Switch controls.
-            </p>
+            <p>Published: <span>March 20, 2017</span></p>
+            <p>Last updated: <span>August 14, 2021</span></p>
           </header>
 
           <h2>
             Pattern Demos
           </h2>
 
+          <p><code>&lt;button></code> base</p>
           <button data-switch class="switch-toggle" data-switch-labels disabled>
             Dark mode
           </button>
 
-          <p><b>No labels</b></p>
-          <button data-switch class="switch-toggle" hidden>
-            Dark mode
-          </button>
+          <p><code>&lt;span></code> base</p>
+          <span data-switch class="switch-toggle" hidden>
+            Dark mode (no visible state labels)
+          </span>
 
-          <hr>
+          <p><code>&lt;input type=checkbox></code> base</p>
+          <label class="check-switch">
+            <input type="checkbox" data-switch data-keep-disabled disabled>
+            Enable dark mode
+          </label>
 
-          <div class="on-off-switch" data-switch hidden>
-            Use large fonts
+          <p><code>&lt;div></code> base</p>
+          <div class="on-off-switch" data-switch id="enabler" hidden>
+            Enable the next switch
           </div>
 
-          <hr>
-
-          <p><b>Disabled example:</b></p>
-          <a href="#" data-keep-disabled aria-disabled="true" class="on-off-switch" data-switch>
-            Use legible fonts
+          <p><code>&lt;a></code> base</p>
+          <a id="target" href="#" data-keep-disabled aria-disabled="true" class="on-off-switch" data-switch>
+            Enable something else
           </a>
 
-          <hr>
-
-          <label class="check-switch">
-            <input type="checkbox" data-switch>
-            Enable something
-          </label>
 
 
           <section class="demo-details">
             <h3>
               Pattern Details
             </h3>
+
+            <details>
+              <summary>Pattern Markup</summary>
+              <pre><code>&lt;button data-switch
+  class="switch-toggle"
+  data-switch-labels
+  disabled
+>
+  Dark mode
+&lt;/button>
+
+&lt;span data-switch class="switch-toggle" hidden>
+  Dark mode (no visible state labels)
+&lt;/span>
+
+&lt;label class="check-switch">
+  &lt;input type="checkbox" data-switch data-keep-disabled disabled>
+  Enable dark mode
+&lt;/label>
+
+&lt;div class="on-off-switch" data-switch id="enabler" hidden>
+  Enable the next switch
+&lt;/div>
+
+&lt;a id="target"
+  href="#"
+  data-keep-disabled
+  aria-disabled="true"
+  class="on-off-switch"
+  data-switch
+>
+  Enable something else
+&lt;/a></code></pre>
+            </details>
 
             <p>
               A switch is meant to function similarly to a checkbox or toggle button, but  assistive technologies are meant to announce it in a manner that is consistent with its on-screen appearance as an on/off sort of UI component.
@@ -104,7 +132,6 @@
 
               Please review them to determine if a <code>role="switch"</code> will be suitable for your project or if an alternative control may be appropriate, due to better support.
             </p>
-
           </section>
 
           <h3>
@@ -121,13 +148,31 @@
     </div>
     <script src="index.js"></script>
     <script>
-      var selector = '[data-switch]';
-      var els = document.querySelectorAll(selector);
-      var i;
+      const selector = '[data-switch]';
+      const els = document.querySelectorAll(selector);
 
-      for ( var i = 0; i < els.length; i++ ) {
-        var dis = new ARIAswitch( els[i] );
+      for ( let i = 0; i < els.length; i++ ) {
+        const dis = new ARIAswitch( els[i] );
       }
+
+      const test = document.getElementById('enabler');
+      const subject = document.getElementById('target');
+
+      const demo = function ( e ) {
+        if ( e.target.getAttribute('aria-checked') === 'true' ) {
+          subject.removeAttribute('aria-disabled');
+          subject.removeAttribute('data-keep-disabled');
+          subject.tabIndex = 0;
+        }
+        else {
+          subject.setAttribute('aria-disabled', 'true');
+          subject.setAttribute('data-keep-disabled', '');
+          subject.tabIndex = -1;
+        }
+      }
+
+      test.addEventListener('click', demo, false);
+      test.addEventListener('keypress', demo, false)
     </script>
   </body>
 </html>
