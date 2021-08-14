@@ -38,21 +38,28 @@
 
 /* hide the actual checkbox from view, but not from keyboards or ATs.
    Instead of standard visually hidden styling, instead set opacity to
-   almost 0 (not zero for ChomeVox legacy bug), pointer-events none, and
-   then set to full height/width of container element so that VO focus
-   ring outlines the component, instead of a tiny box within the component
+   to 0 and set to full height/width of container element so that VO focus
+   ring outlines the component, instead of a tiny box within the component.
+   This will also allow for the checkbox input to be discovered if someone
+   were to search by touch.
 */
 .check-switch input {
   height: 100%;
   left: 0;
-  opacity: .0001;
+  opacity: 0;
   position: absolute;
   top: 0;
   width: 100%;
 }
 
-.check-switch:hover span:before,
-.check-switch input:focus + span:before {
+.check-switch input:disabled + span,
+.check-switch input[aria-disabled="true"] + span {
+  opacity: .65;
+}
+
+
+.check-switch:hover input:not([data-keep-disabled]) + span:before,
+.check-switch input:not([data-keep-disabled]):focus + span:before {
   outline: 2px solid #2196f3;
   outline-offset: 2px;
 }

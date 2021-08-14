@@ -1,6 +1,6 @@
 /** --------------------------------------------------------------------
 
-  ARIA Switch On / Off button.
+  ARIA Switch On / Off button
 
   These styles have not been formatted to work with a
   checkbox that has been modified into a role=switch, and
@@ -25,7 +25,7 @@
 }
 
 .on-off-switch span {
-  background: #eee;
+  background: #eaeaea;
   border-radius: 2px;
   border: 1px solid;
   display: inline-block;
@@ -39,35 +39,44 @@
 .on-off-switch span:before,
 .on-off-switch span:after {
   border-radius: 2px;
+  color: #4a4a4a;
   display: inline-block;
-  min-width: 4ch;
+  min-width: 5ch;
   text-align: center;
 }
 
 .on-off-switch span:before {
-  content: "On";
-}
-
-.on-off-switch span:after {
   content: "Off";
 }
 
-.on-off-switch[disabled],
-.on-off-switch[aria-disabled="true"] {
+.on-off-switch span:after {
+  content: "On";
+}
+
+.on-off-switch[disabled] span:before,
+.on-off-switch[disabled] span:after,
+.on-off-switch[aria-disabled="true"] span:before,
+.on-off-switch[aria-disabled="true"] span:after {
   opacity: .65;
   pointer-events: none;
 }
 
-.on-off-switch:hover span,
-.on-off-switch:focus span {
+.on-off-switch:not([data-keep-disabled]):hover span,
+.on-off-switch:not([data-keep-disabled]):focus span {
   background: #fff;
   outline: 2px solid #2196f3;
   outline-offset: 2px;
 }
 
-.on-off-switch[aria-checked="true"] span:before,
-.on-off-switch[aria-checked="false"] span:after {
-  background: #333;
+.on-off-switch[aria-checked="false"] span:before,
+.on-off-switch[aria-checked="true"] span:after {
   color: #fff;
   margin: 0;
+}
+
+.on-off-switch[aria-checked="false"] span:before {
+  background: #222;
+}
+.on-off-switch[aria-checked="true"] span:after {
+  background: green;
 }
