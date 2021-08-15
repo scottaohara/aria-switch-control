@@ -28,14 +28,14 @@
       </header>
 
       <main aria-label="Content">
-        <article class="demo">
-          <header>
+        <div class="demo">
+          <div>
             <h1>
               <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Switch Demos
             </h1>
             <p>Published: <span>March 20, 2017</span></p>
             <p>Last updated: <span>August 14, 2021</span></p>
-          </header>
+          </div>
 
           <h2>
             Pattern Demos
@@ -43,18 +43,18 @@
 
           <p><code>&lt;button></code> base</p>
           <button data-switch class="switch-toggle" data-switch-labels disabled>
-            Dark mode
+            Enable dark mode
           </button>
 
           <p><code>&lt;span></code> base</p>
           <span data-switch class="switch-toggle" hidden>
-            Dark mode (no visible state labels)
+            Enable dark mode (no visible state labels)
           </span>
 
           <p><code>&lt;input type=checkbox></code> base</p>
           <label class="check-switch">
             <input type="checkbox" data-switch data-keep-disabled disabled>
-            Enable dark mode
+            Enable dark mode (disabled example)
           </label>
 
           <p><code>&lt;div></code> base</p>
@@ -66,7 +66,6 @@
           <a id="target" href="#" data-keep-disabled aria-disabled="true" class="on-off-switch" data-switch>
             Enable something else
           </a>
-
 
 
           <section class="demo-details">
@@ -204,7 +203,7 @@
             <a href="https://w3c.github.io/aria/#switch"><abbr>ARIA</abbr> specification for the  switch role</a>.
             <a href="http://inclusive-components.club/toggle-button/">Inclusive Components Toggle Buttons, by Heydon Pickering</a>.
           </p>
-        </article>
+        </div>
       </main>
 
     </div>
