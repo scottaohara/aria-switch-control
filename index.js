@@ -1,10 +1,5 @@
 // add utilities
-var util = {
-  keyCodes: {
-    ENTER: 13,
-    SPACE: 32
-  },
-
+const util = {
   generateID: function ( base ) {
     return base + Math.floor(Math.random() * 999);
   }
@@ -16,10 +11,10 @@ var util = {
    * A11Y ARIA Switch
    *
    * Author: Scott O'Hara
-   * Version: 2.0.0
+   * Version: 2.0.1
    * License: https://github.com/scottaohara/aria-switch-control/blob/main/LICENSE
    */
-  var ARIAswitchOptions = {
+  let ARIAswitchOptions = {
     baseID: 'aria_switch',
     defaultStateSelector: 'data-switch',
     showLabels: 'data-switch-labels',
@@ -27,13 +22,13 @@ var util = {
   };
 
 
-  var ARIAswitch = function ( inst, options ) {
-    var _options = Object.assign(ARIAswitchOptions, options);
-    var el = inst;
-    var elID;
-    var keepDisabledState;
-    var initState;
-    var isCheckbox;
+  const ARIAswitch = function ( inst, options ) {
+    const _options = Object.assign(ARIAswitchOptions, options);
+    const el = inst;
+    let elID;
+    let keepDisabledState;
+    let initState;
+    let isCheckbox;
 
 
     /**
@@ -41,7 +36,7 @@ var util = {
      * Create unique IDs and generate
      * a markup pattern if necessary.
      */
-    var init = function () {
+    const init = function () {
       elID = el.id || util.generateID(_options.baseID);
 
       keepDisabledState = el.hasAttribute(_options.dataKeepDisabled);
@@ -51,7 +46,7 @@ var util = {
       setupCheckedState();
       generateToggleUI();
       addEvents();
-    }; // init()
+    };
 
 
     /**
@@ -60,14 +55,11 @@ var util = {
      * and that only elements that need it get an appropriate
      * tabindex attribute.
      */
-    var setupBaseWidget = function () {
-      // update the role
+    const setupBaseWidget = function () {
       el.setAttribute('role', 'switch');
 
       // did this start off as a link?
-      if ( el.hasAttribute('href') ) {
-        el.removeAttribute('href');
-      }
+      if ( el.href ) el.removeAttribute('href');
 
       if ( !keepDisabledState ) {
         el.hidden = false;
@@ -91,7 +83,7 @@ var util = {
     /**
      * Setup state depending on the type of starter element.
      */
-    var setupCheckedState = function () {
+    const setupCheckedState = function () {
       if ( initState  && (el || {}).type !== 'checkbox' ) {
         el.setAttribute('aria-checked', 'true');
       }
@@ -102,19 +94,19 @@ var util = {
       if ( initState && (el || {}).type === 'checkbox' ) {
         el.checked = true;
       }
-    }; // setupCheckedState()
+    };
 
 
     /**
      * Add click and keypress events to elements
      */
-    var addEvents = function () {
+    const addEvents = function () {
       el.addEventListener('click', toggleState, false);
 
       if ( el.tagName !== 'BUTTON' ) {
         el.addEventListener('keypress', keyToggle, false);
       }
-    }; // addEvents()
+    };
 
 
     /**
@@ -122,9 +114,9 @@ var util = {
      * slider, or whatever version of the UI people
      * want to visually create.
      */
-    var generateToggleUI = function () {
-      var ui = doc.createElement('span');
-      var hasLabels = el.hasAttribute(_options.showLabels);
+    const generateToggleUI = function () {
+      const ui = doc.createElement('span');
+      const hasLabels = el.hasAttribute(_options.showLabels);
 
       ui.setAttribute('aria-hidden', 'true');
 
@@ -138,7 +130,7 @@ var util = {
       else {
         el.appendChild(ui);
       }
-    }; // generateToggleUI()
+    };
 
 
     /**
@@ -147,25 +139,25 @@ var util = {
      * can update their checked state natively and do not need
      * aria-checked.
      */
-    var toggleState = function ( e ) {
+    const toggleState = function ( e ) {
       if ( !el.hasAttribute('aria-disabled') ) {
         if ( (el || {}).type !== 'checkbox' ) {
           e.preventDefault();
           el.setAttribute('aria-checked', el.getAttribute('aria-checked') === 'true' ? 'false' : 'true');
         }
       }
-    }; // toggleState()
+    };
 
 
     /**
      * Handle keyboard events for the switch.
      */
-    var keyToggle = function ( e ) {
-      var keyCode = e.keyCode || e.which;
+    const keyToggle = function ( e ) {
+      const keyCode = e.keyCode || e.which;
 
       switch ( keyCode ) {
-        case util.keyCodes.SPACE:
-        case util.keyCodes.ENTER:
+        case 32:
+        case 13:
           e.preventDefault();
           toggleState(e);
           break;
@@ -182,21 +174,21 @@ var util = {
        */
       if ( (el || {}).type === 'checkbox' ) {
         switch ( keyCode ) {
-          case util.keyCodes.ENTER:
+          case 13:
             e.preventDefault();
-            this.click()
+            this.checked = this.checked == true ? false : true;
             break;
 
           default:
             break;
         }
       }
-    } // keyToggle()
+    }
+
 
     init.call( this );
     return this;
   }; // ARIAswitch()
 
   w.ARIAswitch = ARIAswitch;
-
 })( window, document );
