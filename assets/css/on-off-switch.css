@@ -79,4 +79,5 @@
 }
 .on-off-switch[aria-checked="true"] span:after {
   background: green;
+  outline: 1px solid green;
 }
