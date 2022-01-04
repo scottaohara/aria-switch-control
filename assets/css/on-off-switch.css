@@ -76,6 +76,7 @@
 
 .on-off-switch[aria-checked="false"] span:before {
   background: #222;
+  outline: 1px solid #222;
 }
 .on-off-switch[aria-checked="true"] span:after {
   background: green;
