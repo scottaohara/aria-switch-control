@@ -34,7 +34,7 @@
               <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Switch Demos
             </h1>
             <p>Published: <span>March 20, 2017</span></p>
-            <p>Last updated: <span>August 14, 2021</span></p>
+            <p>Last updated: <span>January 23, 2022</span></p>
           </div>
 
           <h2>
@@ -42,7 +42,7 @@
           </h2>
 
           <p><code>&lt;button></code> base</p>
-          <button data-switch class="switch-toggle" data-switch-labels disabled>
+          <button type=button data-switch class="switch-toggle" data-switch-labels disabled>
             Enable dark mode
           </button>
 
@@ -76,6 +76,7 @@
             <details>
               <summary>Pattern Markup (before script runs)</summary>
               <pre><code>&lt;button data-switch
+  type="button"
   class="switch-toggle"
   data-switch-labels
   disabled
@@ -110,6 +111,7 @@
             <details>
               <summary>Pattern Markup (after script runs)</summary>
               <pre><code>&lt;button data-switch 
+  type="button"
   class="switch-toggle" 
   data-switch-labels 
   role="switch" 
@@ -170,20 +172,20 @@
             </details>
 
             <p>
-              A switch is meant to function similarly to a checkbox or toggle button, but  assistive technologies are meant to announce it in a manner that is consistent with its on-screen appearance as an on/off sort of UI component.
+              A switch is meant to function similarly to a checkbox or toggle button, but assistive technologies are meant to announce it in a manner that is consistent with its on-screen appearance as an on/off sort of UI component.
             </p>
 
             <p>
-              This particular pattern uses a <code>button</code> as the base element that is then modified into a <code>role="switch"</code> with JavaScript. When a <code>button</code> becomes a switch, the <code>aria-checked</code> attribute needs to be added, and managed, to appropriately convey the current state to screen reader users.
+              This particular pattern uses a <code>&lt;button></code> as the base element that is then modified into a <code>role="switch"</code> with JavaScript. When a <code>&lt;button></code> is modified to be exposed as a <code>switch</code>, the <code>aria-checked</code> attribute needs to be added, and managed, to appropriately convey the current state to assistive technologies (AT).
             </p>
 
             <p>
-              For more information about switches and how screen readers interpret them, please review <a href="https://scottaohara.github.io/a11y_styled_form_controls/src/checkbox--switch/">the checkbox switch pattern</a>.
+              For more information about switches and how AT, such as screen readers, interpret them, please review <a href="https://scottaohara.github.io/a11y_styled_form_controls/src/checkbox--switch/">the checkbox switch pattern</a>.
             </p>
 
             <p>
-              For more information on the JavaScript and markup used here, please see the
-              <a href="https://github.com/scottaohara/aria-switch-button">readme on the GitHub repo for this pattern</a>.
+              For more information on the JavaScript and markup used, please see the
+              <a href="https://github.com/scottaohara/aria-switch-button">ReadMe on the GitHub repo for this pattern</a>.
             </p>
 
             <h4>Usage note</h4>
@@ -191,7 +193,7 @@
               Presently there are
               <a href="https://scottaohara.github.io/a11y_styled_form_controls/src/checkbox--switch/#affects_on_sr">inconsistencies with screen readers and ARIA switches</a>.
 
-              Please review them to determine if a <code>role="switch"</code> will be suitable for your project or if an alternative control may be appropriate, due to better support.
+              Please review them to understand how the role is treated depending on screen reader and browser pairings, and if there are any gaps you may need to consider when considering the use of this role.
             </p>
           </section>
 
@@ -199,8 +201,8 @@
             Continue reading
           </h3>
           <p>
-            For more information about this switches, please read the
-            <a href="https://w3c.github.io/aria/#switch"><abbr>ARIA</abbr> specification for the  switch role</a>.
+            For more information about switches, please read the
+            <a href="https://w3c.github.io/aria/#switch"><abbr>ARIA</abbr> specification for the  <code>switch</code> role</a>.
             <a href="http://inclusive-components.club/toggle-button/">Inclusive Components Toggle Buttons, by Heydon Pickering</a>.
           </p>
         </div>
